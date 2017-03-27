@@ -23,7 +23,8 @@ include_once('includes/db_connect.php');
         echo "Error STMT";
     }
 
-    echo json_encode($return);
+    $result = [ 'status' => 'OK', 'dados' => $return];
 
+    echo json_encode($result);
     $mysqli->close();
 ?>
