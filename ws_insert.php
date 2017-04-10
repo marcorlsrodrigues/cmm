@@ -6,10 +6,11 @@ if(isset($_POST['degree'],$_POST['level'],$_POST['power'])){
 	$degree = $_POST['degree'];
 	$level=$_POST['level'];
     $power=$_POST['power'];
+	$device_id=$_POST['device_id'];
 	
-	$sql_insert = "insert into cmm(date,temperature,level,power) values (now(),?,?,?)";
+	$sql_insert = "insert into cmm(date,temperature,level,power,device_id) values (now(),?,?,?,?)";
 	$stmt = $mysqli->prepare($sql_insert);
-	$stmt->bind_param('dii',$degree,$level,$power);
+	$stmt->bind_param('diii',$degree,$level,$power,$device_id);
 
 	if ($stmt) {
         if($stmt->execute()){
